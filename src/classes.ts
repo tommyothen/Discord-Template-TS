@@ -31,6 +31,7 @@ export class Client extends DiscordClient {
 
           jsfile.forEach((file) => {
             const props = require(`${__dirname}/commands/${dir}/${file}`);
+            props.type = dir;
             this.commands.set(props.help.name, props);
             props.help.aliases.forEach((alias: string) => {
               this.aliases.set(alias, props.help.name);
