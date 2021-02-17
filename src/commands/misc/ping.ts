@@ -1,7 +1,7 @@
-import { Client, Message } from "discord.js";
+import { Message } from "discord.js";
 
 // This is the main function that the bot will run
-module.exports.run = async (client: Client, msg: Message, args: string[]) => {
+module.exports.run = async ({ msg }: { msg: Message }) => {
   msg.channel.send("Pong!");
 }
 
