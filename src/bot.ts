@@ -7,7 +7,8 @@ const client = new Client();
 
 // Handler for client ready event
 client.on("ready", () => {
-  console.log(`Logged in as ${client.user?.tag}!`);
+  if (client.shard?.ids.includes(0))
+    console.log(`Logged in as ${client.user?.tag}!`);
 });
 
 // Handler for message event

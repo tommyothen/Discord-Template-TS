@@ -20,7 +20,10 @@ export class Client extends DiscordClient {
 
       // Check if there are any readable directories
       if (dirs.length === 0) {
-        return console.error("Command directory not found.");
+        if (this.shard?.ids.includes(0)) {
+          console.error("Command directory not found.");
+        }
+        return;
       }
 
       // Loop over each directory
@@ -32,7 +35,10 @@ export class Client extends DiscordClient {
           // Check if there are any javascript files
           const jsfile = files.filter(f => f.split('.').pop() === "js");
           if (jsfile.length === 0) {
-            return console.error(`No files in /commands/${dir}`);
+            if (this.shard?.ids.includes(0)) {
+              console.error(`No files in commands/${dir}`);
+            }
+            return;
           }
 
           // Loop over each javascript file
